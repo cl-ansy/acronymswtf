@@ -1,16 +1,20 @@
 ---
-
+import Container from "@components/Container.astro";
+import Layout from "@layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="">
+  <header>
+    <Container>
+      <h1
+        class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight place-items-center pt-16 pb-8 md:pt-8">
+        WTF does that acronym stand for?
+      </h1>
+    </Container>
+  </header>
+  <main>
+    <Container>
+      <p>Sub Wow</p>
+    </Container>
+  </main>
+</Layout>

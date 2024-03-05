@@ -1,0 +1,22 @@
+---
+import { getAcronymData } from "@/firebase/server";
+
+import Layout from "@/layouts/Layout.astro";
+
+const { acronym } = Astro.params;
+
+const acronymData = await getAcronymData(acronym!);
+---
+
+<Layout title={` | ${acronym}`}>
+  <h1>{acronym}</h1>
+  <ul>
+    {
+      acronymData.map((d) => (
+        <li>
+          <span>{d.meaning}</span>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

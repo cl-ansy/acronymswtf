@@ -1,5 +1,9 @@
 import type { ServiceAccount } from "firebase-admin";
 import { initializeApp, cert, getApps } from "firebase-admin/app";
+import {
+  getFirestore,
+ } from "firebase-admin/firestore";
+
 
 const activeApps = getApps();
 
@@ -16,6 +20,23 @@ const serviceAccount = {
   client_x509_cert_url: import.meta.env.FIREBASE_CLIENT_CERT_URL,
 };
 
+interface Acronym {
+  documentId: string;
+  abbr: string;
+  meaning: number;
+  tags: Array<string>;
+}
+
 export const app = activeApps.length === 0 ? initializeApp({
   credential: cert(serviceAccount as ServiceAccount),
 }) : activeApps[0];
+export const firestore = getFirestore(app);
+
+export const getAcronymData = async (acronym: string) => {
+  console.log
+  const acronymsRef = firestore.collection("acronyms");
+  const acronymSnapshot = await acronymsRef.where("abbr", "==", acronym).get();
+  return acronymSnapshot.docs.map((doc) => {
+    return { documentId: doc.id, ...doc.data() };
+  }) as Array<Acronym>;
+}

@@ -33,7 +33,6 @@ export const app = activeApps.length === 0 ? initializeApp({
 export const firestore = getFirestore(app);
 
 export const getAcronymData = async (acronym: string) => {
-  console.log
   const acronymsRef = firestore.collection("acronyms");
   const acronymSnapshot = await acronymsRef.where("abbr", "==", acronym).get();
   return acronymSnapshot.docs.map((doc) => {

@@ -26,8 +26,8 @@ import Input from "@/components/ui/Input.astro";
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         const formData = new FormData(form);
-        const acronym = formData.get("acronym")?.toUpperCase();
-        window.location.assign(`/a/${acronym}`);
+        const acronym = formData.get("acronym") as string;
+        window.location.assign(`/a/${acronym.toUpperCase()}`);
       });
     }
   }

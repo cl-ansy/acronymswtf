@@ -7,7 +7,6 @@
       "@/assets/*": ["assets/*"],
       "@/components/*": ["components/*"],
       "@/content/*": ["content/*"],
-      "@/firebase/*": ["firebase/*"],
       "@/layouts/*": ["layouts/*"],
       "@/pages/*": ["pages/*"],
       "@/styles/*": ["styles/*"],

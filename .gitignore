@@ -1,5 +1,6 @@
 # build output
 dist/
+
 # generated types
 .astro/
 
@@ -16,7 +17,7 @@ pnpm-debug.log*
 .env
 .env.production
 .env.local
-.dev.vars
+.env.firebase
 
 # macOS-specific files
 .DS_Store

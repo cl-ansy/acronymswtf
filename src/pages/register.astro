@@ -1,15 +1,63 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/ui/Card/Card.astro";
+import CardHeader from "@/components/ui/Card/CardHeader.astro";
+import CardContent from "@/components/ui/Card/CardContent.astro";
+import CardFooter from "@/components/ui/Card/CardContent.astro";
+import Input from "@/components/ui/Input.astro";
+import Button from "@/components/ui/Button.astro";
+import Link from "@/components/ui/Link.astro";
 ---
 
 <Layout title=" | Register">
-  <h1>Register</h1>
-  <p>Already have an account? <a href="/signin">Sign in</a></p>
-  <form action="/api/auth/register" method="post">
-    <label for="email" for="email">Email</label>
-    <input type="email" name="email" id="email" />
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" />
-    <button type="submit">Login</button>
-  </form>
+  <div class="w-full flex justify-center">
+    <Card class="my-24">
+      <CardHeader>
+        <h2 class="text-center text-2xl font-bold leading-9 tracking-tight">
+          Create an account
+        </h2>
+      </CardHeader>
+
+      <CardContent>
+        <form class="space-y-6" action="/api/auth/register" method="POST">
+          <div>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required={true}
+              placeholder="Email Address"
+              class="w-full"
+            />
+          </div>
+
+          <div>
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              required={true}
+              minlength="8"
+              maxlength="32"
+              placeholder="Password"
+              class="w-full"
+            />
+          </div>
+
+          <div>
+            <Button type="submit" class="w-full">Register</Button>
+          </div>
+        </form>
+      </CardContent>
+
+      <CardFooter>
+        <p class="text-sm text-center">
+          Already have an account?
+          <Link href="/signin">Sign in</Link>
+        </p>
+      </CardFooter>
+    </Card>
+  </div>
 </Layout>

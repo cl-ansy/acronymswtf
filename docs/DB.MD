@@ -3,8 +3,8 @@
 │              acronym              │   │                           acronym_tag                            │   │                tag                │
 ├───────────────────────────────────┤   ├──────────────────────────────────────────────────────────────────┤   ├───────────────────────────────────┤
 │id UUID DEFAULT uuid_generate_v4 ()├─┐ │acronym_id UUID                                                   │ ┌─┤id UUID DEFAULT uuid_generate_v4 ()│
-│abbr TEXT                          │ │ │tag_id UUID                                                       │ │ │value TEXT                         │
-│meaning TEXT                       │ │ │PRIMARY KEY (acronym_id, tag_id)                                  │ │ │PRIMARY KEY (id)                   │
+│abbr TEXT NOT NULL                 │ │ │tag_id UUID                                                       │ │ │value TEXT NOT NULL                │
+│meaning TEXT NOT NULL              │ │ │PRIMARY KEY (acronym_id, tag_id)                                  │ │ │PRIMARY KEY (id)                   │
 │PRIMARY KEY (id)                   │ ├─┤FOREIGN KEY (acronym_id) REFERENCES acronym (id) ON DELETE CASCADE│ │ │                                   │
 │UNIQUE (abbr)                      │ │ │FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE        ├─┘ │                                   │
 │                                   │ │ │                                                                  │   │                                   │
@@ -25,8 +25,8 @@
                                       │ │                             request                              │
                                       │ ├──────────────────────────────────────────────────────────────────┤
                                       │ │id INT GENERATED ALWAYS AS IDENTITY                               │
-                                      │ │acronym_id UUID                                                   │
                                       │ │approved BOOLEAN                                                  │
+                                      │ │acronym_id UUID                                                   │
                                       │ │PRIMARY KEY (id)                                                  │
                                       └─┤FOREIGN KEY (acronym_id) REFERENCES acronym (id) ON DELETE CASCADE│
                                         │                                                                  │

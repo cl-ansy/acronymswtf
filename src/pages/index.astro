@@ -1,16 +1,19 @@
 ---
-
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/Container.astro";
+import AcronymSearch from "@/components/AcronymSearch.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="">
+  <Container>
+    <header>
+      <h1
+        class="mx-auto max-w-2xl text-center text-5xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
+        WTF does that acronym stand for?
+      </h1>
+    </header>
+    <main>
+      <AcronymSearch />
+    </main>
+  </Container>
+</Layout>

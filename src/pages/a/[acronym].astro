@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+const { acronym } = Astro.params;
+
+const acronymData: object[] = [];
+---
+
+<Layout title={` | ${acronym}`}>
+  <h1>{acronym}</h1>
+  <ul>
+    {
+      acronymData.map((d) => (
+        <li>
+          <span>{d}</span>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

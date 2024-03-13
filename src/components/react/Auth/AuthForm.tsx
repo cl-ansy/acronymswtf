@@ -8,7 +8,7 @@ import {
 
 import Submit from "@/components/react/Form/Submit.tsx";
 
-type FormData = {
+type FormFields = {
   email: string;
   password: string;
 };
@@ -18,12 +18,33 @@ export const AuthForm = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormFields>();
 
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log(1, data);
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
     setLoading(true);
+
+    try {
+      const res = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        throw new Error(await res.text());
+      }
+
+      window.location.replace("/dashboard");
+    } catch (error: any) {
+      setError("root.authError", {
+        message: error.message,
+      });
+      setLoading(false);
+    }
   };
 
   return (
@@ -77,6 +98,12 @@ export const AuthForm = () => {
           </p>
         )}
       </div>
+
+      {errors.root?.authError?.message && (
+        <p className="text-[0.8rem] font-medium text-destructive">
+          {errors.root.authError.message}
+        </p>
+      )}
 
       <Submit text="Sign in" loading={loading} />
     </form>

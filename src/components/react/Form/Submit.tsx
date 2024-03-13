@@ -14,7 +14,7 @@ const Submit = ({ text, loading }: SubmitProps) => (
       text-primary-foreground shadow transition-colors hover:bg-primary/90
       focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none
       disabled:opacity-50">
-    {text}
+    {loading ? <Spinner /> : text}
   </button>
 );
 

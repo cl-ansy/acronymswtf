@@ -1,5 +1,5 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import Card from "@/components/astro/Card/Card.astro";
 import CardHeader from "@/components/astro/Card/CardHeader.astro";
 import CardContent from "@/components/astro/Card/CardContent.astro";
@@ -18,7 +18,7 @@ if (accessToken && refreshToken) {
 }
 ---
 
-<Layout title=" | Sign in">
+<BaseLayout title=" | Sign in">
   <div class="flex w-full justify-center">
     <Card class="my-24 w-80">
       <CardHeader>
@@ -39,4 +39,4 @@ if (accessToken && refreshToken) {
       </CardFooter>
     </Card>
   </div>
-</Layout>
+</BaseLayout>

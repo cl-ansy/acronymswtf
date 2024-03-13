@@ -1,5 +1,5 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import Card from "@/components/astro/Card/Card.astro";
 import CardHeader from "@/components/astro/Card/CardHeader.astro";
 import CardContent from "@/components/astro/Card/CardContent.astro";
@@ -9,7 +9,7 @@ import Button from "@/components/astro/Button.astro";
 import Link from "@/components/astro/Link.astro";
 ---
 
-<Layout title=" | Register">
+<BaseLayout title=" | Register">
   <div class="flex w-full justify-center">
     <Card class="my-24">
       <CardHeader>
@@ -60,4 +60,4 @@ import Link from "@/components/astro/Link.astro";
       </CardFooter>
     </Card>
   </div>
-</Layout>
+</BaseLayout>

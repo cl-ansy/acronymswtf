@@ -8,6 +8,8 @@ import Input from "@/components/ui/Input.astro";
 import Button from "@/components/ui/Button.astro";
 import Link from "@/components/ui/Link.astro";
 
+import AuthForm from "@/components/AuthForm.astro";
+
 const { cookies, redirect } = Astro;
 
 const accessToken = cookies.get("sb-access-token");
@@ -28,35 +30,7 @@ if (accessToken && refreshToken) {
       </CardHeader>
 
       <CardContent>
-        <form class="space-y-6" action="/api/auth/signin" method="POST">
-          <div>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              required={true}
-              placeholder="Email Address"
-              class="w-full"
-            />
-          </div>
-
-          <div>
-            <Input
-              id="password"
-              name="password"
-              type="password"
-              autocomplete="current-password"
-              required={true}
-              placeholder="Password"
-              class="w-full"
-            />
-          </div>
-
-          <div>
-            <Button type="submit" class="w-full">Sign in</Button>
-          </div>
-        </form>
+        <AuthForm />
       </CardContent>
 
       <CardFooter>

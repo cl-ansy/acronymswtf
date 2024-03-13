@@ -1,5 +1,10 @@
 {
-  "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+  "plugins": [
+    "prettier-plugin-astro",
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-classnames",
+    "prettier-plugin-merge"
+  ],
   "overrides": [
     {
       "files": "*.astro",
@@ -11,5 +16,6 @@
   "tabWidth": 2,
   "useTabs": false,
   "bracketSameLine": true,
-  "tailwindFunctions": ["clsx"]
+  "tailwindFunctions": ["clsx"],
+  "customFunctions": ["clsx"]
 }

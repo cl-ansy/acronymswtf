@@ -1,11 +1,12 @@
-import { useForm } from "react-hook-form";
+import { useState } from "react";
 import {
+  useForm,
   type Path,
   type UseFormRegister,
   type SubmitHandler,
 } from "react-hook-form";
 
-import Submit from "@/components/react/Form/Submit";
+import Submit from "@/components/react/Form/Submit.tsx";
 
 type FormData = {
   email: string;
@@ -13,6 +14,7 @@ type FormData = {
 };
 
 export const AuthForm = () => {
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -21,6 +23,7 @@ export const AuthForm = () => {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     console.log(1, data);
+    setLoading(true);
   };
 
   return (
@@ -42,7 +45,9 @@ export const AuthForm = () => {
               message: "Invalid email address",
             },
           })}
-          className="w-full flex-auto rounded-md border-0 bg-foreground/5 px-2.5 py-1.5 text-foreground ring-1 ring-inset ring-foreground/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+          className="w-full flex-auto rounded-md border-0 bg-foreground/5 px-2.5 py-1.5
+            text-foreground ring-1 ring-inset ring-foreground/10 focus:ring-2
+            focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
         />
         {errors.email && (
           <p className="text-[0.8rem] font-medium text-destructive">
@@ -62,7 +67,9 @@ export const AuthForm = () => {
           {...register("password", {
             required: "Password is required",
           })}
-          className="w-full flex-auto rounded-md border-0 bg-foreground/5 px-2.5 py-1.5 text-foreground ring-1 ring-inset ring-foreground/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+          className="w-full flex-auto rounded-md border-0 bg-foreground/5 px-2.5 py-1.5
+            text-foreground ring-1 ring-inset ring-foreground/10 focus:ring-2
+            focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
         />
         {errors.password && (
           <p className="text-[0.8rem] font-medium text-destructive">
@@ -71,7 +78,7 @@ export const AuthForm = () => {
         )}
       </div>
 
-      <Submit text="Sign in" status="idle" />
+      <Submit text="Sign in" loading={loading} />
     </form>
   );
 };

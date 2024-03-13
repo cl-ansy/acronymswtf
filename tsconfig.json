@@ -1,17 +1,37 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "types": ["@cloudflare/workers-types/2023-07-01"],
-    "baseUrl": "src",
+    "types": [
+      "@cloudflare/workers-types/2023-07-01"
+    ],
+    "baseUrl": "C:/Users/cslan/dev/acronymswtf/src",
     "paths": {
-      "@/assets/*": ["assets/*"],
-      "@/components/*": ["components/*"],
-      "@/content/*": ["content/*"],
-      "@/layouts/*": ["layouts/*"],
-      "@/pages/*": ["pages/*"],
-      "@/styles/*": ["styles/*"],
-      "@/supabase/*": ["supabase/*"],
-      "@/utils/*": ["utils/*"]
-    }
+      "@/assets/*": [
+        "assets/*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/content/*": [
+        "content/*"
+      ],
+      "@/layouts/*": [
+        "layouts/*"
+      ],
+      "@/pages/*": [
+        "pages/*"
+      ],
+      "@/styles/*": [
+        "styles/*"
+      ],
+      "@/supabase/*": [
+        "supabase/*"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

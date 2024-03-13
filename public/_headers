@@ -1,0 +1,18 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Type: text/html; charset=UTF-8
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Resource-Policy: same-site
+  Permissions-Policy: geolocation=(), camera=(), microphone=()
+  Content-Security-Policy: default-src 'self';
+
+https://acronyms.wtf
+  Access-Control-Allow-Origin: https://acronyms.wtf
+
+https://acronymswtf.pages.dev
+  X-Robots-Tag: noindex
+  Access-Control-Allow-Origin: https://acronymswtf.pages.dev

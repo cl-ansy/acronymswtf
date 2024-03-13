@@ -1,14 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Card from "@/components/ui/Card/Card.astro";
-import CardHeader from "@/components/ui/Card/CardHeader.astro";
-import CardContent from "@/components/ui/Card/CardContent.astro";
-import CardFooter from "@/components/ui/Card/CardContent.astro";
-import Input from "@/components/ui/Input.astro";
-import Button from "@/components/ui/Button.astro";
-import Link from "@/components/ui/Link.astro";
+import Card from "@/components/astro/Card/Card.astro";
+import CardHeader from "@/components/astro/Card/CardHeader.astro";
+import CardContent from "@/components/astro/Card/CardContent.astro";
+import CardFooter from "@/components/astro/Card/CardContent.astro";
+import Link from "@/components/astro/Link.astro";
 
-import AuthForm from "@/components/AuthForm.astro";
+import AuthForm from "@/components/react/Auth/AuthForm.tsx";
 
 const { cookies, redirect } = Astro;
 
@@ -22,7 +20,7 @@ if (accessToken && refreshToken) {
 
 <Layout title=" | Sign in">
   <div class="w-full flex justify-center">
-    <Card class="my-24">
+    <Card class="my-24 w-80">
       <CardHeader>
         <h2 class="text-center text-2xl font-bold leading-9 tracking-tight">
           Sign in to your account
@@ -30,7 +28,7 @@ if (accessToken && refreshToken) {
       </CardHeader>
 
       <CardContent>
-        <AuthForm />
+        <AuthForm client:load />
       </CardContent>
 
       <CardFooter>
@@ -42,3 +40,4 @@ if (accessToken && refreshToken) {
     </Card>
   </div>
 </Layout>
+@/components/react/AuthForm@/components/react/Form/AuthForm@/components/react/Auth/AuthForm

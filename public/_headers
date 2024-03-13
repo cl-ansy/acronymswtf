@@ -8,9 +8,9 @@
   Permissions-Policy: geolocation=(), camera=(), microphone=()
   Content-Security-Policy: default-src 'self';
 
-https://acronyms.wtf
+https://acronyms.wtf/*
   Access-Control-Allow-Origin: https://acronyms.wtf
 
-https://acronymswtf.pages.dev
+https://acronymswtf.pages.dev/*
   X-Robots-Tag: noindex
   Access-Control-Allow-Origin: https://acronymswtf.pages.dev

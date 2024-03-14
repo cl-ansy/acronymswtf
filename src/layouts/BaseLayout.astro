@@ -1,0 +1,45 @@
+---
+import "@fontsource-variable/josefin-sans";
+import "@fontsource-variable/merriweather-sans";
+import "@/styles/base.css";
+
+import { SEO } from "astro-seo";
+import { ViewTransitions } from "astro:transitions";
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+
+    <SEO
+      title={`acronyms.wtf${title}`}
+      description="Online glossary of acronyms and their meanings."
+      twitter={{
+        creator: "",
+        site: "",
+      }}
+    />
+
+    <ViewTransitions />
+  </head>
+  <body>
+    <slot />
+    <style is:global>
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+</html>

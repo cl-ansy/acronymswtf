@@ -1,0 +1,34 @@
+---
+import Button from "@/components/astro/Button.astro";
+import Input from "@/components/astro/Input.astro";
+---
+
+<acronym-search>
+  <form class="mx-auto mt-10 flex max-w-md gap-x-4">
+    <Input
+      id="acronym-search"
+      label="Acronym"
+      name="acronym"
+      type="text"
+      required={true}
+      placeholder="Enter an acronym"
+    />
+    <Button type="submit" style="primary">Check</Button>
+  </form>
+</acronym-search>
+
+<script>
+  class AcronymSearch extends HTMLElement {
+    constructor() {
+      super();
+      const form = this.querySelector("form") as HTMLFormElement;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const acronym = formData.get("acronym") as string;
+        window.location.assign(`/a/${acronym.toUpperCase()}`);
+      });
+    }
+  }
+  customElements.define("acronym-search", AcronymSearch);
+</script>

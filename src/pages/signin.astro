@@ -1,12 +1,12 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Card from "@/components/ui/Card/Card.astro";
-import CardHeader from "@/components/ui/Card/CardHeader.astro";
-import CardContent from "@/components/ui/Card/CardContent.astro";
-import CardFooter from "@/components/ui/Card/CardContent.astro";
-import Input from "@/components/ui/Input.astro";
-import Button from "@/components/ui/Button.astro";
-import Link from "@/components/ui/Link.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Card from "@/components/astro/Card/Card.astro";
+import CardHeader from "@/components/astro/Card/CardHeader.astro";
+import CardContent from "@/components/astro/Card/CardContent.astro";
+import CardFooter from "@/components/astro/Card/CardContent.astro";
+import Link from "@/components/astro/Link.astro";
+
+import SignIn from "@/components/react/Auth/SignIn.tsx";
 
 const { cookies, redirect } = Astro;
 
@@ -18,9 +18,9 @@ if (accessToken && refreshToken) {
 }
 ---
 
-<Layout title=" | Sign in">
-  <div class="w-full flex justify-center">
-    <Card class="my-24">
+<BaseLayout title=" | Sign in">
+  <div class="flex w-full justify-center">
+    <Card class="my-24 w-80">
       <CardHeader>
         <h2 class="text-center text-2xl font-bold leading-9 tracking-tight">
           Sign in to your account
@@ -28,43 +28,15 @@ if (accessToken && refreshToken) {
       </CardHeader>
 
       <CardContent>
-        <form class="space-y-6" action="/api/auth/signin" method="POST">
-          <div>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              required={true}
-              placeholder="Email Address"
-              class="w-full"
-            />
-          </div>
-
-          <div>
-            <Input
-              id="password"
-              name="password"
-              type="password"
-              autocomplete="current-password"
-              required={true}
-              placeholder="Password"
-              class="w-full"
-            />
-          </div>
-
-          <div>
-            <Button type="submit" class="w-full">Sign in</Button>
-          </div>
-        </form>
+        <SignIn client:load />
       </CardContent>
 
       <CardFooter>
-        <p class="text-sm text-center">
+        <p class="text-center text-sm">
           New here?
           <Link href="/register">Register</Link>
         </p>
       </CardFooter>
     </Card>
   </div>
-</Layout>
+</BaseLayout>

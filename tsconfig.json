@@ -12,6 +12,8 @@
       "@/styles/*": ["styles/*"],
       "@/supabase/*": ["supabase/*"],
       "@/utils/*": ["utils/*"]
-    }
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

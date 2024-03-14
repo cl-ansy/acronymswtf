@@ -1,12 +1,12 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const { acronym } = Astro.params;
 
 const acronymData: object[] = [];
 ---
 
-<Layout title={` | ${acronym}`}>
+<BaseLayout title={` | ${acronym}`}>
   <h1>{acronym}</h1>
   <ul>
     {
@@ -17,4 +17,4 @@ const acronymData: object[] = [];
       ))
     }
   </ul>
-</Layout>
+</BaseLayout>

@@ -6,14 +6,29 @@ import {
   type SubmitHandler,
 } from "react-hook-form";
 
+import { post } from "@/utils/network";
 import Submit from "@/components/react/Form/Submit.tsx";
+
+type AuthFormProps = {
+  postUrl: string;
+  submitText: string;
+  passwordAutoComplete: string;
+};
 
 type FormFields = {
   email: string;
   password: string;
 };
 
-export const AuthForm = () => {
+const Error = (props: { message: string }) => (
+  <p className="text-[0.8rem] font-medium text-destructive">{props.message}</p>
+);
+
+export const AuthForm = ({
+  postUrl,
+  submitText,
+  passwordAutoComplete,
+}: AuthFormProps) => {
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -26,18 +41,7 @@ export const AuthForm = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok) {
-        throw new Error(await res.text());
-      }
-
+      await post(postUrl, data);
       window.location.replace("/dashboard");
     } catch (error: any) {
       setError("root.authError", {
@@ -70,11 +74,7 @@ export const AuthForm = () => {
             text-foreground ring-1 ring-inset ring-foreground/10 focus:ring-2
             focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
         />
-        {errors.email && (
-          <p className="text-[0.8rem] font-medium text-destructive">
-            {errors.email.message}
-          </p>
-        )}
+        {errors.email && <Error message={errors.email.message!} />}
       </div>
 
       <div>
@@ -83,29 +83,25 @@ export const AuthForm = () => {
         </label>
         <input
           type="password"
-          autoComplete="current-password"
+          autoComplete={passwordAutoComplete}
           placeholder="Password"
           {...register("password", {
             required: "Password is required",
+            minLength: 8,
+            maxLength: 256,
           })}
           className="w-full flex-auto rounded-md border-0 bg-foreground/5 px-2.5 py-1.5
             text-foreground ring-1 ring-inset ring-foreground/10 focus:ring-2
             focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
         />
-        {errors.password && (
-          <p className="text-[0.8rem] font-medium text-destructive">
-            {errors.password.message}
-          </p>
-        )}
+        {errors.password && <Error message={errors.password.message!} />}
       </div>
 
-      {errors.root?.authError?.message && (
-        <p className="text-[0.8rem] font-medium text-destructive">
-          {errors.root.authError.message}
-        </p>
+      {errors.root?.authError && (
+        <Error message={errors.root?.authError?.message!} />
       )}
 
-      <Submit text="Sign in" loading={loading} />
+      <Submit text={submitText} loading={loading} />
     </form>
   );
 };

@@ -6,7 +6,7 @@ import CardContent from "@/components/astro/Card/CardContent.astro";
 import CardFooter from "@/components/astro/Card/CardContent.astro";
 import Link from "@/components/astro/Link.astro";
 
-import AuthForm from "@/components/react/Auth/AuthForm.tsx";
+import SignIn from "@/components/react/Auth/SignIn.tsx";
 
 const { cookies, redirect } = Astro;
 
@@ -28,7 +28,7 @@ if (accessToken && refreshToken) {
       </CardHeader>
 
       <CardContent>
-        <AuthForm client:load />
+        <SignIn client:load />
       </CardContent>
 
       <CardFooter>

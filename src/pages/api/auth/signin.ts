@@ -6,7 +6,7 @@ type ReqBody = {
   password: string;
 };
 
-export const POST: APIRoute = async ({ request, cookies, redirect }) => {
+export const POST: APIRoute = async ({ request, cookies }) => {
   try {
     const { email, password }: ReqBody = await request.json();
 

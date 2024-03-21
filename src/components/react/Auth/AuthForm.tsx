@@ -42,7 +42,7 @@ export const AuthForm = ({
 
     try {
       await post(postUrl, data);
-      window.location.replace("/dashboard");
+      window.location.replace("/");
     } catch (error: any) {
       setError("root.authError", {
         message: error.message,

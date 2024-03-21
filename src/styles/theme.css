@@ -1,0 +1,29 @@
+@tailwind base;
+
+@layer base {
+  :root {
+    --background: 222 84% 5%;
+    --foreground: 210 40% 98%;
+    --primary: 196 84% 45%;
+    --primary-foreground: 45 67% 1%;
+    --secondary: 240 6% 20%;
+    --secondary-foreground: var(--foreground);
+
+    --accent: 56 31% 69%;
+    --accent-foreground: var(--primary-foreground);
+    --destructive: 10 97% 59%;
+    --destructive-foreground: var(--primary-foreground);
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --card: var(--background);
+    --card-foreground: var(--foreground);
+    --popover: var(--background);
+    --popover-foreground: var(--foreground);
+    --border: var(--secondary);
+    --input: var(--secondary);
+    --ring: var(--primary);
+
+    --radius: 0.3rem;
+  }
+}

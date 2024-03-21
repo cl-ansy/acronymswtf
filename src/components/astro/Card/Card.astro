@@ -8,7 +8,8 @@ const { class: className, ...rest } = Astro.props;
 
 <div
   class:list={[
-    "rounded-xl border border-secondary shadow-sm shadow-accent",
+    `rounded border border-border bg-card text-card-foreground shadow-sm
+    shadow-secondary`,
     className,
   ]}>
   <slot />

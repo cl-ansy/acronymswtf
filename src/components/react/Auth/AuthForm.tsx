@@ -70,9 +70,10 @@ export const AuthForm = ({
               message: "Invalid email address",
             },
           })}
-          className="w-full flex-auto rounded-md border-0 bg-foreground/5 px-2.5 py-1.5
-            text-foreground ring-1 ring-inset ring-foreground/10 focus:ring-2
-            focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+          className="w-full flex-auto rounded border-0 bg-background px-2.5 py-1.5 text-foreground
+            ring-1 ring-inset ring-foreground/10 placeholder:text-muted focus:ring-2
+            focus:ring-inset focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50
+            sm:text-sm sm:leading-6"
         />
         {errors.email && <Error message={errors.email.message!} />}
       </div>
@@ -90,9 +91,10 @@ export const AuthForm = ({
             minLength: 8,
             maxLength: 256,
           })}
-          className="w-full flex-auto rounded-md border-0 bg-foreground/5 px-2.5 py-1.5
-            text-foreground ring-1 ring-inset ring-foreground/10 focus:ring-2
-            focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+          className="w-full flex-auto rounded border-0 bg-background px-2.5 py-1.5 text-foreground
+            ring-1 ring-inset ring-foreground/10 placeholder:text-muted focus:ring-2
+            focus:ring-inset focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50
+            sm:text-sm sm:leading-6"
         />
         {errors.password && <Error message={errors.password.message!} />}
       </div>

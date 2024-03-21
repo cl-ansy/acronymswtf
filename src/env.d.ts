@@ -3,11 +3,11 @@
 type Runtime = import("@astrojs/cloudflare").DirectoryRuntime<Env>;
 
 declare namespace App {
-	interface Locals extends Runtime {}
+  interface Locals extends Runtime {}
 }
 
 interface ImportMetaEnv {
-	readonly SUPABASE_URL: string;
+  readonly SUPABASE_URL: string;
   readonly SUPABASE_KEY: string;
 }
 

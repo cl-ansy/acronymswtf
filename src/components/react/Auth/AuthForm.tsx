@@ -11,6 +11,7 @@ import Submit from "@/components/react/Form/Submit.tsx";
 
 type AuthFormProps = {
   postUrl: string;
+  redirectPath: string;
   submitText: string;
   passwordAutoComplete: string;
 };
@@ -26,6 +27,7 @@ const Error = (props: { message: string }) => (
 
 export const AuthForm = ({
   postUrl,
+  redirectPath,
   submitText,
   passwordAutoComplete,
 }: AuthFormProps) => {
@@ -42,7 +44,7 @@ export const AuthForm = ({
 
     try {
       await post(postUrl, data);
-      window.location.replace("/");
+      window.location.replace(redirectPath);
     } catch (error: any) {
       setError("root.authError", {
         message: error.message,

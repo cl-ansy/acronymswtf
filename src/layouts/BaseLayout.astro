@@ -36,8 +36,10 @@ const { title } = Astro.props;
     <ViewTransitions />
   </head>
   <body>
-    <Header />
-    <slot />
+    <Header transition:persist />
+    <main>
+      <slot />
+    </main>
     <style is:global>
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */

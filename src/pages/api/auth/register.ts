@@ -1,23 +1,37 @@
 import type { APIRoute } from "astro";
 import { supabase } from "@/supabase/client";
 
+type RegisterRequestBody = {
+  email: string;
+  password: string;
+};
+
 export const POST: APIRoute = async ({ request, redirect }) => {
-  const formData = await request.formData();
-  const email = formData.get("email")?.toString();
-  const password = formData.get("password")?.toString();
+  try {
+    const { email, password }: RegisterRequestBody = await request.json();
 
-  if (!email || !password) {
-    return new Response("Email and password are required", { status: 400 });
+    if (!email || !password) {
+      return new Response("Email and password are required", { status: 400 });
+    }
+
+    const { error: supabaseError } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    if (supabaseError) {
+      return new Response(supabaseError.message, {
+        status: supabaseError.status || 500,
+      });
+    }
+
+    return new Response(
+      JSON.stringify({
+        message: "Register success",
+      }),
+      { status: 200 },
+    );
+  } catch (error) {
+    return new Response(null, { status: 500 });
   }
-
-  const { error } = await supabase.auth.signUp({
-    email,
-    password,
-  });
-
-  if (error) {
-    return new Response(error.message, { status: 500 });
-  }
-
-  return redirect("/signin");
 };

@@ -1,26 +1,29 @@
 import type { APIRoute } from "astro";
 import { supabase } from "@/supabase/client";
 
-type ReqBody = {
+type SigninRequestBody = {
   email: string;
   password: string;
 };
 
 export const POST: APIRoute = async ({ request, cookies }) => {
   try {
-    const { email, password }: ReqBody = await request.json();
+    const { email, password }: SigninRequestBody = await request.json();
 
     if (!email || !password) {
       return new Response("Email and password are required", { status: 400 });
     }
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const { data, error: supabaseError } =
+      await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (error) {
-      return new Response(error.message, { status: error.status || 500 });
+    if (supabaseError) {
+      return new Response(supabaseError.message, {
+        status: supabaseError.status || 500,
+      });
     }
 
     const { access_token, refresh_token } = data.session;
@@ -38,6 +41,6 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       { status: 200 },
     );
   } catch (error) {
-    return new Response(null, { status: 400 });
+    return new Response(null, { status: 500 });
   }
 };

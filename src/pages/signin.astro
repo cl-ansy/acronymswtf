@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/astro/Container.astro";
 import Card from "@/components/astro/Card/Card.astro";
 import CardHeader from "@/components/astro/Card/CardHeader.astro";
 import CardContent from "@/components/astro/Card/CardContent.astro";
@@ -19,24 +20,26 @@ if (accessToken && refreshToken) {
 ---
 
 <BaseLayout title=" | Sign in">
-  <div class="flex w-full justify-center">
-    <Card class="my-24 w-80">
-      <CardHeader>
-        <h2 class="text-center text-2xl font-bold leading-9 tracking-tight">
-          Sign in to your account
-        </h2>
-      </CardHeader>
+  <Container>
+    <div class="flex w-full justify-center">
+      <Card class="w-80">
+        <CardHeader>
+          <h2 class="text-center text-2xl font-bold leading-9 tracking-tight">
+            Sign in to your account
+          </h2>
+        </CardHeader>
 
-      <CardContent>
-        <SignIn client:load />
-      </CardContent>
+        <CardContent>
+          <SignIn client:load />
+        </CardContent>
 
-      <CardFooter>
-        <p class="text-center text-sm">
-          New here?
-          <Link href="/register">Register</Link>
-        </p>
-      </CardFooter>
-    </Card>
-  </div>
+        <CardFooter>
+          <p class="text-center text-sm">
+            New here?
+            <Link href="/register">Register</Link>
+          </p>
+        </CardFooter>
+      </Card>
+    </div>
+  </Container>
 </BaseLayout>

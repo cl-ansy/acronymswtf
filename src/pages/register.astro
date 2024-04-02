@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/astro/Container.astro";
 import Card from "@/components/astro/Card/Card.astro";
 import CardHeader from "@/components/astro/Card/CardHeader.astro";
 import CardContent from "@/components/astro/Card/CardContent.astro";
@@ -11,24 +12,26 @@ import Register from "@/components/react/Auth/Register.tsx";
 ---
 
 <BaseLayout title=" | Register">
-  <div class="flex w-full justify-center">
-    <Card class="my-24 w-80">
-      <CardHeader>
-        <h2 class="text-center text-2xl font-bold leading-9 tracking-tight">
-          Create an account
-        </h2>
-      </CardHeader>
+  <Container>
+    <div class="flex w-full justify-center">
+      <Card class="w-80">
+        <CardHeader>
+          <h2 class="text-center text-2xl font-bold leading-9 tracking-tight">
+            Create an account
+          </h2>
+        </CardHeader>
 
-      <CardContent>
-        <Register client:load />
-      </CardContent>
+        <CardContent>
+          <Register client:load />
+        </CardContent>
 
-      <CardFooter>
-        <p class="text-center text-sm">
-          Already have an account?
-          <Link href="/signin">Sign in</Link>
-        </p>
-      </CardFooter>
-    </Card>
-  </div>
+        <CardFooter>
+          <p class="text-center text-sm">
+            Already have an account?
+            <Link href="/signin">Sign in</Link>
+          </p>
+        </CardFooter>
+      </Card>
+    </div>
+  </Container>
 </BaseLayout>
